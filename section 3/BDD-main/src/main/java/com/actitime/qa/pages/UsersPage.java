@@ -27,6 +27,8 @@ public class UsersPage extends TestBase  {
     @FindBy(xpath = "//div[text()='Save & Send Invitation']")
     WebElement saveUserButton;
 
+    @FindBy(xpath = "//*[@id=\"createUserPanel\"]/div[2]/div[1]/div[5]/span")
+    WebElement closeButton;
     Logger log = Logger.getLogger(UsersPage.class);
 
     public UsersPage() {
@@ -63,6 +65,10 @@ public class UsersPage extends TestBase  {
     public void clickCreateUserLink() {
         this.saveUserButton.click();
         log.info("New user create button click!");
+    }
+    public void clickCloseButton() {
+        this.closeButton.click();
+        log.info("close button click!");
     }
 
 }

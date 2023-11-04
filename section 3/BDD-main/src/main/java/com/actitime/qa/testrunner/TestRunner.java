@@ -8,7 +8,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "E:\\4th year assignments\\sqa\\BDD-main\\src\\main\\java\\com\\actitime\\qa\\feature\\create_new_user.feature"
+		features = "E:\\4th year assignments\\sqa\\repo\\IS4102-BDD-Assignment\\section 3\\BDD-main\\src\\main\\java\\com\\actitime\\qa\\feature\\create_new_user.feature"
 		,glue={"com/actitime/qa/stepdefinitions"}
 		,monochrome = true,
 				strict=true,

@@ -12,6 +12,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ActitimeStepDefinitions extends TestBase {
@@ -93,24 +94,15 @@ public class ActitimeStepDefinitions extends TestBase {
 		usersPage.clickCreateUserLink();
 	}
 
-	@Then("User should see a success message")
-	public void userShouldSeeSuccessMessage() {
-		// Add code to validate the success message is displayed
-		WebElement successMessage = driver.findElement(By.id("successMessage"));
-		assertTrue(successMessage.isDisplayed());
+	@Then("^User clicks close button$")
+	public void user_Clicks_close_button() throws Throwable {
+		usersPage.clickCloseButton();
 	}
 
-	@Then("User should be able to find the new users {string} in the users list")
-	public void userShouldFindNewUserInTheList(String fullName) {
+	@Then("User should be able to find the new users {string} {string} in the users list")
+	public void userShouldFindNewUserInTheList(String firstname, String lastname) {
 		// Add code to check if the new user is in the user list
-		WebElement newUser = driver.findElement(By.xpath("//div[@class='user-list']/div[contains(text(),'" + fullName + "')]"));
-		assertTrue(newUser.isDisplayed());
-	}
-
-	@Then("User should be able to verify the email {string} for the new user")
-	public void userShouldVerifyEmailForNewUser(String email) {
-		// Add code to check if the email for the new user is correct
-		WebElement userEmail = driver.findElement(By.xpath("//div[@class='user-list']/div[contains(text(),'" + email + "')]"));
-		assertTrue(userEmail.isDisplayed());
+		String newUser = driver.findElement(By.xpath("//*[@id=\"userListTableContainer\"]/div/table/tbody/tr[1]/td[1]/div/table/tbody/tr/td/div[1]/span[2]")).getText();;
+		assertEquals("Text doesn't match", lastname+ ", " +firstname, newUser);
 	}
 }
